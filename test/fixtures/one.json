@@ -1,0 +1,38 @@
+[
+  {
+    "name": "Hudson",
+    "status": "GOOD SERVICE"
+  },
+  {
+    "name": "Harlem",
+    "status": "GOOD SERVICE"
+  },
+  {
+    "name": "Wassaic",
+    "status": "GOOD SERVICE"
+  },
+  {
+    "name": "New Haven",
+    "status": "GOOD SERVICE"
+  },
+  {
+    "name": "New Canaan",
+    "status": "GOOD SERVICE"
+  },
+  {
+    "name": "Danbury",
+    "status": "GOOD SERVICE"
+  },
+  {
+    "name": "Waterbury",
+    "status": "GOOD SERVICE"
+  },
+  {
+    "name": "Pascack Valley",
+    "status": "GOOD SERVICE"
+  },
+  {
+    "name": "Port Jervis",
+    "status": "GOOD SERVICE"
+  }
+]

@@ -1,0 +1,44 @@
+{
+  "name": "mta",
+  "version": "0.0.0",
+  "description": "mta ball breaker",
+  "main": "index.js",
+  "scripts": {
+    "pretest": "#jshint --reporter node_modules/jshint-stylish/stylish.js ./lib ./test index.js",
+    "test": "mocha --compilers coffee:coffee-script/register --recursive -R spec ./test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/landau/mta.git"
+  },
+  "keywords": [
+    "mta"
+  ],
+  "author": "Trevor Landau <landautrevor@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/landau/mta/issues"
+  },
+  "homepage": "https://github.com/landau/mta",
+  "dependencies": {
+    "is-predicate": "~0.2.0",
+    "lodash": "~2.4.1",
+    "request": "~2.34.0",
+    "express": "~3.4.8",
+    "xml2json": "~0.4.0",
+    "mongojs": "~0.10.0",
+    "lru-cache": "~2.5.0",
+    "moment": "~2.5.1"
+  },
+  "devDependencies": {
+    "sinon": "~1.8.2",
+    "sinon-chai": "~2.5.0",
+    "chai": "~1.9.0",
+    "mocha": "~1.17.1",
+    "jshint": "~2.4.4",
+    "jshint-stylish": "~0.1.5",
+    "superagent": "~0.16.0",
+    "nock": "~0.27.2",
+    "coffee-script": "~1.7.1"
+  }
+}
