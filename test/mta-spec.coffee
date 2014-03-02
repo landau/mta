@@ -4,13 +4,16 @@ chai = require 'chai'
 should = chai.should();
 request = require 'superagent'
 nock = require 'nock'
-moment = require 'moment'
+async = require 'async'
 
 _ = require 'lodash'
 
 mta = require '../lib/mta/mta'
 store = require('../lib/mta/store').store
 state = require('../lib/mta/store')._state
+genId = require('../lib/util').genId
+mtaDb = require '../lib/mta/db'
+util =  require '../lib/util'
 
 fs = require 'fs'
 path = require 'path'
@@ -22,22 +25,24 @@ process.env.MONGO_DB = 'test';
 db = require('../lib/db').coll;
 
 describe 'MTA', ->
-  before ->
+  before (done)->
     nock('http://web.mta.info')
       .get('/status/serviceStatus.txt')
       .reply(200, xml)
+    db.remove {}, done
 
-  after ->
+
+  after (done)->
     nock.restore();
-    db.remove();
+    db.remove {}, done
 
   describe 'mta', ->
     before ->
       mta._cache.reset()
 
-    after ->
-      db.remove();
+    after (done)->
       mta._cache.reset()
+      db.remove {}, done
 
     it 'should respond with data', (done)->
       mta.getData (err, data) ->
@@ -55,11 +60,11 @@ describe 'MTA', ->
         done()
 
   describe 'store', ->
-    id = moment().format 'M/D/YYYY'
+    id = genId()
 
     before (done)->
       mta._cache.reset()
-      db.remove(done);
+      db.remove {}, done
 
     it 'should insert an initial value', (done)->
       store id, (err)->
@@ -94,3 +99,44 @@ describe 'MTA', ->
           should.not.exist err
           results.length.should.equal 2
           done(err)
+
+  describe 'db', ->
+    beforeEach (done)->
+      db.remove {}, done
+
+    describe '#findById', ->
+      id = genId();
+
+      beforeEach (done)->
+        db.insert { _id: id}, done
+
+      it 'should get a result by id', (done)->
+        mtaDb.findById id, (err, results)->
+          should.not.exist err
+          results.length.should.equal 1
+          done()
+
+
+    describe '#findByRange', ->
+      id = genId();
+
+      id2 = new Date();
+      id2.setDate id2.getDate() - 1
+      id2 = util.formatId id2
+
+      id3 = new Date();
+      id3.setDate id3.getDate() - 2
+      id3 = util.formatId id3
+
+      ids = [id, id2, id3].map (v)-> return _id: v
+
+
+      before (done)->
+        db.remove {}, done
+
+      it 'should get a result by range', (done)->
+        db.insert ids, ->
+          mtaDb.findByRange (new Date(id3)), (new Date(id)), (err, results)->
+            should.not.exist err
+            results.length.should.equal 3
+            done()

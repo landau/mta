@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "pretest": "#jshint --reporter node_modules/jshint-stylish/stylish.js ./lib ./test index.js",
-    "test": "mocha --compilers coffee:coffee-script/register --recursive -R spec ./test"
+    "test": "mocha --compilers coffee:coffee-script/register --recursive -R spec ./test",
+    "start": "node .",
+    "dev": "NODE_ENV=development NODE_DEBUG=true node index"
   },
   "repository": {
     "type": "git",
@@ -39,6 +41,7 @@
     "jshint-stylish": "~0.1.5",
     "superagent": "~0.16.0",
     "nock": "~0.27.2",
-    "coffee-script": "~1.7.1"
+    "coffee-script": "~1.7.1",
+    "async": "~0.2.10"
   }
 }
