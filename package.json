@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "pretest": "#jshint --reporter node_modules/jshint-stylish/stylish.js ./lib ./test index.js",
-    "test": "mocha --compilers coffee:coffee-script/register --recursive -R spec ./test",
+    "test": "NODE_ENV=test MONGO_DB=test mocha --compilers coffee:coffee-script/register --recursive -R spec ./test",
     "start": "node .",
     "dev": "NODE_ENV=development NODE_DEBUG=true node index"
   },
