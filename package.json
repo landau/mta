@@ -4,6 +4,7 @@
   "description": "mta ball breaker",
   "main": "index.js",
   "scripts": {
+    "browserify": "browserify client/main.js > public/js/bundle.js",
     "pretest": "#jshint --reporter node_modules/jshint-stylish/stylish.js ./lib ./test index.js",
     "test": "NODE_ENV=test MONGO_DB=test mocha --compilers coffee:coffee-script/register --recursive -R spec ./test",
     "start": "node .",
@@ -30,7 +31,10 @@
     "xml2json": "~0.4.0",
     "mongojs": "~0.10.0",
     "lru-cache": "~2.5.0",
-    "moment": "~2.5.1"
+    "moment": "~2.5.1",
+    "date-range": "0.0.2",
+    "async": "~0.2.10",
+    "jade": "~1.3.0"
   },
   "devDependencies": {
     "sinon": "~1.8.2",

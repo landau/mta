@@ -1,0 +1,57 @@
+extends layout
+
+block content
+  - var url = 'http://web.mta.info/status/serviceStatus.txt'
+  .container
+    .masthead
+      h3.text-muted MTA Stats
+
+    //- Jumbotron
+    .jumbotron
+      h1 How is the MTA doing?
+      p.lead
+        | The MTA's service has been pretty sour as of late.
+        | You'll find an aggregation of data taken from&nbsp;
+        a(href=url, target='_blank')= url
+        | &nbsp;below.
+
+      small.note Note: Data storage began March 3, 2014
+
+    .row.graph(data-data=data.day, data-graph='bar')
+      .col-md-8: .chart
+
+
+      .col-md-4
+        h2 Today
+        p
+          | foo
+
+    .row.graph(data-data=data.week, data-graph='bar')
+      .col-md-4
+        h2 Past Week
+        p
+          | bar
+
+      .col-md-8: .chart
+
+    .row.graph(data-data=data.last30, data-graph='bar')
+      .col-md-8: .chart
+
+      .col-md-4
+        h2 Past Month
+        p
+          | bar
+
+
+    .row.graph(data-data=data.lastyear, data-graph='bar')
+      .col-md-4
+        h2 Past Year
+        p
+          | bar
+
+      .col-md-8: .chart
+
+
+    // Site footer
+    .footer
+      p MTA Stats 2014

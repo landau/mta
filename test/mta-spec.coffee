@@ -20,8 +20,6 @@ path = require 'path'
 xml = fs.readFileSync path.join(__dirname, 'fixtures/one.xml'), 'utf8'
 json = require './fixtures/one.json'
 
-process.env.NODE_ENV = 'test';
-process.env.MONGO_DB = 'test';
 db = require('../lib/db').coll;
 
 describe 'MTA', ->
