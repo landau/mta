@@ -46,6 +46,7 @@
     "superagent": "~0.16.0",
     "nock": "~0.27.2",
     "coffee-script": "~1.7.1",
-    "async": "~0.2.10"
+    "async": "~0.2.10",
+    "browserify": "~3.31.2"
   }
 }

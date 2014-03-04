@@ -2,6 +2,7 @@
 
 chai = require 'chai'
 should = chai.should();
+sinon = require 'sinon'
 request = require 'superagent'
 nock = require 'nock'
 async = require 'async'
@@ -19,6 +20,8 @@ fs = require 'fs'
 path = require 'path'
 xml = fs.readFileSync path.join(__dirname, 'fixtures/one.xml'), 'utf8'
 json = require './fixtures/one.json'
+jsonDelay = json.map (v) -> _.extend {}, v
+jsonDelay[0].status = "DELAY"
 
 db = require('../lib/db').coll;
 
@@ -28,7 +31,6 @@ describe 'MTA', ->
       .get('/status/serviceStatus.txt')
       .reply(200, xml)
     db.remove {}, done
-
 
   after (done)->
     nock.restore();
@@ -86,6 +88,19 @@ describe 'MTA', ->
           should.exist result
           result._id.should.equal id
           result.items.length.should.equal 1
+          done(err)
+
+    it 'should add a new entry if different', (done)->
+      sinon.stub mta, 'getData', (cb)-> process.nextTick -> cb(null, jsonDelay)
+      store id, (err)->
+        should.not.exist err
+        db.find { _id: id }, (err, results)->
+          results.length.should.equal 1
+          result = _.first results
+          should.exist result
+          result._id.should.equal id
+          result.items.length.should.equal 2
+          mta.getData.restore();
           done(err)
 
     it 'should create a new entry for a new id', (done)->
