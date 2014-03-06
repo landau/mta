@@ -13,6 +13,8 @@ html(lang='en')
       link(rel='stylesheet', href='/css/main.min.css')
     else
       link(rel='stylesheet', href='/css/bootstrap.min.css')
+      link(rel='stylesheet', href='/css/nv.d3.css')
+      link(rel='stylesheet', href='/css/desert.css')
       link(rel='stylesheet', href='/css/main.css')
     link(rel='icon', type='img/png' href='/img/favicon.png')
 
@@ -22,6 +24,7 @@ html(lang='en')
   if isProd
     script(src='/js/bundle.min.js')
   else
-    script(src='/js/d3.v2.js')
-    script(src='/js/rickshaw.min.js')
+    script(src='/js/d3.v3.js')
+    script(src='/js/fisheye.js')
+    script(src='/js/nv.d3.js')
     script(src='/js/bundle.js')

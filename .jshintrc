@@ -1,5 +1,5 @@
 {
-  "browser": false,
+  "browser": true,
   "node": true,
   "camelcase": true,
   "eqeqeq": false,
@@ -12,6 +12,7 @@
   "latedef": true,
   "eqnull": true,
   "globals": {
+    "d3"        : true,
     "describe"  : true,
     "xdescribe" : true,
     "it"        : true,

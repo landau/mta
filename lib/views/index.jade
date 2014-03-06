@@ -10,46 +10,67 @@ block content
     .jumbotron
       h1 How is the MTA doing?
       p.lead
-        | The MTA's service has been pretty sour as of late.
+        | It's time to track MTA's performance.
         | You'll find an aggregation of data taken from&nbsp;
         a(href=url, target='_blank')= url
         | &nbsp;below.
 
-      small.note Note: Data storage began March 3, 2014
+      p.lead
+        | This data is used to create an average of the number of times the possible statuses occur.
+
+      small.note Note: Data aggregation began March 3, 2014
+
+    .row(data-legend)
+      h4 Legend
 
     .row.graph(data-data=data.day, data-graph='bar')
-      .col-md-8: .chart
-
-
-      .col-md-4
-        h2 Today
-        p
-          | foo
+      h2 Today
+      .chart: svg(style='height:200px;width:225px;')
+      .chart: svg(style='height:200px;width:225px;')
+      .chart: svg(style='height:200px;width:225px;')
+      .chart: svg(style='height:200px;width:225px;')
+      .chart: svg(style='height:200px;width:225px;')
+      .chart: svg(style='height:200px;width:225px;')
+      .chart: svg(style='height:200px;width:225px;')
+      .chart: svg(style='height:200px;width:225px;')
+      .chart: svg(style='height:200px;width:225px;')
 
     .row.graph(data-data=data.week, data-graph='bar')
-      .col-md-4
-        h2 Past Week
-        p
-          | bar
-
-      .col-md-8: .chart
+      h2 Past Week
+      .chart: svg(style='height:200px;width:225px;')
+      .chart: svg(style='height:200px;width:225px;')
+      .chart: svg(style='height:200px;width:225px;')
+      .chart: svg(style='height:200px;width:225px;')
+      .chart: svg(style='height:200px;width:225px;')
+      .chart: svg(style='height:200px;width:225px;')
+      .chart: svg(style='height:200px;width:225px;')
+      .chart: svg(style='height:200px;width:225px;')
+      .chart: svg(style='height:200px;width:225px;')
 
     .row.graph(data-data=data.last30, data-graph='bar')
-      .col-md-8: .chart
-
-      .col-md-4
-        h2 Past Month
-        p
-          | bar
+      h2 Past Month
+      .chart: svg(style='height:200px;width:225px;')
+      .chart: svg(style='height:200px;width:225px;')
+      .chart: svg(style='height:200px;width:225px;')
+      .chart: svg(style='height:200px;width:225px;')
+      .chart: svg(style='height:200px;width:225px;')
+      .chart: svg(style='height:200px;width:225px;')
+      .chart: svg(style='height:200px;width:225px;')
+      .chart: svg(style='height:200px;width:225px;')
+      .chart: svg(style='height:200px;width:225px;')
 
 
     .row.graph(data-data=data.lastyear, data-graph='bar')
-      .col-md-4
-        h2 Past Year
-        p
-          | bar
-
-      .col-md-8: .chart
+      h2 Past Year
+      .chart: svg(style='height:200px;width:225px;')
+      .chart: svg(style='height:200px;width:225px;')
+      .chart: svg(style='height:200px;width:225px;')
+      .chart: svg(style='height:200px;width:225px;')
+      .chart: svg(style='height:200px;width:225px;')
+      .chart: svg(style='height:200px;width:225px;')
+      .chart: svg(style='height:200px;width:225px;')
+      .chart: svg(style='height:200px;width:225px;')
+      .chart: svg(style='height:200px;width:225px;')
 
 
     // Site footer
