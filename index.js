@@ -1,2 +1,2 @@
 var app = require('./lib');
-app.start();
+app.start(process.env.PORT);
