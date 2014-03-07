@@ -1,3 +1,4 @@
+/* global d3 */
 /* global nv */
 'use strict';
 
@@ -37,6 +38,17 @@ var legend = colors.map(makeKey).reduce(function(frag, el) {
 document.querySelector('[data-legend]').appendChild(legend);
 
 
+function showNoData(el) {
+  var nodata = document.createElement('h3');
+  nodata.innerText = 'Not enough data';
+  nodata.classList.add('no-data');
+
+  _.toArray(el.querySelectorAll('.chart')).forEach(function (e) {
+    el.removeChild(e);
+  });
+  el.appendChild(nodata);
+}
+
 _.each(data, function(_data, i) {
   var series = aggregate(_data);
 
@@ -53,8 +65,17 @@ _.each(data, function(_data, i) {
   });
   */
 
+  var bar = barGraphs[i];
+  var entries = series.Danbury.length;
+
+  if (i === 0 && entries < 1) return showNoData(bar);
+  if (i === 1 && entries < 2) return showNoData(bar);
+  if (i === 2 && entries < 7) return showNoData(bar);
+  if (i === 3 && entries < 8) return showNoData(bar);
+
   _.keys(series).forEach(function(k, j) {
     var s = series[k];
+
     nv.addGraph(function() {
       var chart = nv.models.pieChart()
         .x(_.property('label'))
@@ -65,7 +86,7 @@ _.each(data, function(_data, i) {
         .labelThreshold(0.05)
         .labelType('percent');
 
-      var el = barGraphs[i].querySelectorAll('.chart')[j];
+      var el = bar.querySelectorAll('.chart')[j];
 
       var text = document.createElement('div');
       text.innerText = k;

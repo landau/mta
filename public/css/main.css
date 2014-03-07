@@ -35,3 +35,9 @@
 .chart {
   display: inline-block;
 }
+
+
+.no-data {
+  color: #777;
+  text-align: center;
+}
