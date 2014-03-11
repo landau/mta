@@ -2,7 +2,7 @@
 
 module.exports = [
   'Good Service',
-  'Delayed',
+  'Delays',
   'Planned Work',
   'Service Change'
 ];
