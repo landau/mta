@@ -1,5 +1,6 @@
 /* global d3 */
 /* global nv */
+/* browser: true */
 'use strict';
 
 var _slice = [].slice;
@@ -29,7 +30,6 @@ function makeKey(color, i) {
 
   return d;
 }
-
 var legend = colors.map(makeKey).reduce(function(frag, el) {
   frag.appendChild(el);
   return frag;
