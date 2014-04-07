@@ -66,12 +66,12 @@ _.each(data, function(_data, i) {
   */
 
   var bar = barGraphs[i];
-  var entries = series.Danbury.length;
+  //var entries = series.Danbury.length;
 
-  if (i === 0 && entries < 1) return showNoData(bar);
-  if (i === 1 && entries < 2) return showNoData(bar);
-  if (i === 2 && entries < 7) return showNoData(bar);
-  if (i === 3 && entries < 8) return showNoData(bar);
+  //if (i === 0 && entries < 1) return showNoData(bar);
+  //if (i === 1 && entries < 2) return showNoData(bar);
+  //if (i === 2 && entries < 7) return showNoData(bar);
+  //if (i === 3 && entries < 8) return showNoData(bar);
 
   _.keys(series).forEach(function(k, j) {
     var s = series[k];
